@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title th:text="${#themes.code('meng.pageTitle')}"></title>
+    <link rel="stylesheet" th:href="@{${#themes.code('meng.css.file')}}"/>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+
+        var trackGeoLocation = /*[[${trackGeoLocation}]]*/ === "true";
+
+        window.casLogin = {
+            flowExecutionKey: [[${flowExecutionKey}]],
+            pageTitle: [[#{cas.login.pagetitle}]],
+            submitBtnMsg: [[#{screen.welcome.button.login}]],
+            usernameLabel: [[#{screen.welcome.label.netid}]],
+            passwordLabel: [[#{screen.welcome.label.password}]],
+            loginWaitingMsg: [[#{screen.welcome.button.loginwip}]],
+            credential: [[${credential}]],
+            imgPath: [[${#themes.code('meng.img.file')}]]
+        };
+        /*]]>*/
+    </script>
+</head>
+<body>
+</body>
+<script th:src="@{${#themes.code('meng.javascript.file')}}"></script>
+<script th:src="@{${#themes.code('meng.index.file')}}"></script>
+</html>
