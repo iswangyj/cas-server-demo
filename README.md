@@ -27,6 +27,6 @@ cas.ticket.tgt.rememberMe.timeToKillInSeconds=3600
 
 ## 其他注意问题
 ### 登出页面casLogoutView.html
-根据cas client的url，修改“<a href="http://127.0.0.1:8080">返回登录页面</a>”中的相对应地url即可
+根据cas client的url，修改“返回登录页面”中的相对应地url即可
 ### 关于静态资源加载失败问题
 建议查看war包内/target/cas/WEB-INF/statica/themes/meng/images下的图片资源是否可用。若资源不可用，可尝试采用手动替换该路径下的图片的方法。
