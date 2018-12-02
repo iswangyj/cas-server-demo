@@ -71,6 +71,11 @@
         </dependency>
         <dependency>
             <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-support-pac4j-webflow</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-core-webflow</artifactId>
             <version>${cas.version}</version>
         </dependency>
@@ -97,17 +102,6 @@
             <artifactId>lombok</artifactId>
             <version>1.18.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.apereo.cas</groupId>
-            <artifactId>cas-server-core-api-util</artifactId>
-            <version>5.2.6</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-        </dependency>
-
     </dependencies>
 
     <build>
