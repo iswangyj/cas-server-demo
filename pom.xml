@@ -153,4 +153,32 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <id>local</id>
+        </profile>
+
+        <profile>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <id>cluster</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apereo.cas</groupId>
+                    <artifactId>cas-server-support-redis-ticket-registry</artifactId>
+                    <version>${cas.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <id>prod</id>
+        </profile>
+    </profiles>
 </project>

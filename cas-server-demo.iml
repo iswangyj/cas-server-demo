@@ -28,6 +28,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:4.0.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apereo.cas:cas-server-webapp-tomcat:war:5.2.6" level="project" />
     <orderEntry type="library" name="Maven: org.apereo.cas:cas-server-support-jdbc:5.2.6" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.9.1" level="project" />
@@ -151,7 +152,6 @@
     <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apereo.cas:cas-server-core-util:5.2.6" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.bitbucket.b_c:jose4j:0.6.1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apereo.cas:cas-server-core-api-util:5.2.6" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apereo.cas:cas-server-core-api-web:5.2.6" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.zxing:core:3.3.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.vdurmont:semver4j:2.0.3" level="project" />
@@ -283,10 +283,15 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apereo.cas:cas-server-support-pac4j-core:5.2.6" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.44" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apereo.cas:cas-server-support-pac4j-core:5.2.6" level="project" />
-    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.44" level="project" />
-    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apereo.cas:cas-server-support-redis-ticket-registry:5.2.6" level="project" />
     <orderEntry type="library" name="Maven: org.apereo.cas:cas-server-core-api-util:5.2.6" level="project" />
-    <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:4.0.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.springframework.boot:spring-boot-starter-data-redis:1.5.12.RELEASE" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.springframework.data:spring-data-redis:1.8.11.RELEASE" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.springframework.data:spring-data-keyvalue:1.2.11.RELEASE" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.springframework:spring-oxm:4.3.15.RELEASE" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: redis.clients:jedis:2.9.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apereo.cas:cas-server-core-logging:5.2.6" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apereo.cas:cas-server-core-logging-config:5.2.6" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apereo.cas:cas-server-support-redis-core:5.2.6" level="project" />
   </component>
 </module>

@@ -25,8 +25,21 @@ cas.ticket.tgt.rememberMe.timeToKillInSeconds=3600
 
 各项配置参数具体含义见https://ningyu1.github.io/site/post/54-cas-server/
 
-## 其他注意问题
-### 登出页面casLogoutView.html
-根据cas client的url，修改“返回登录页面”中的相对应地url即可
-### 关于静态资源加载失败问题
-建议查看war包内/target/cas/WEB-INF/statica/themes/meng/images下的图片资源是否可用。若资源不可用，可尝试采用手动替换该路径下的图片的方法。
+
+## 配置Redis Ticket Registry
+首先，添加依赖如下：
+<dependency>
+    <groupId>org.apereo.cas</groupId>
+    <artifactId>cas-server-support-redis-ticket-registry</artifactId>
+    <version>${cas.version}</version>
+</dependency>
+其次：在application.properties中添加如下配置：
+cas.ticket.registry.redis.host=127.0.0.1
+cas.ticket.registry.redis.database=0
+cas.ticket.registry.redis.port=6379
+cas.ticket.registry.redis.password=
+cas.ticket.registry.redis.timeout=2000
+cas.ticket.registry.redis.useSsl=false
+cas.ticket.registry.redis.usePool=false
+......
+最后，注意实体类的序列化，如未序列化会造成票据无法存入redis
