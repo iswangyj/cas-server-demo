@@ -158,14 +158,14 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <id>local</id>
+            <id>dev</id>
         </profile>
 
         <profile>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
-            <id>cluster</id>
+            <id>prod</id>
             <dependencies>
                 <dependency>
                     <groupId>org.apereo.cas</groupId>
@@ -173,12 +173,6 @@
                     <version>${cas.version}</version>
                 </dependency>
             </dependencies>
-        </profile>
-        <profile>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <id>prod</id>
         </profile>
     </profiles>
 </project>
