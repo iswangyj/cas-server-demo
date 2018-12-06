@@ -1,6 +1,7 @@
 package com.oc.auth.handler;
 
 import com.oc.entity.User;
+import com.oc.enums.LoginTypeEnum;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apereo.cas.authentication.HandlerResult;
@@ -36,19 +37,16 @@ public class QueryDatabaseAuthenticationHandler extends AbstractUsernamePassword
         String account = usernamePasswordCredential.getUsername();
         String password = usernamePasswordCredential.getPassword();
 
-        // JDBC模板依赖于连接池来获得数据的连接，所以必须先要构造连接池
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://rm-m5ec16sm22j7393s3ro.mysql.rds.aliyuncs.com:3306/spp_dev2");
         dataSource.setUsername("wyj");
         dataSource.setPassword("wyj");
 
-        // 创建JDBC模板
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource);
 
         String sql = "SELECT * FROM spp_user WHERE account = ?";
-
         User info = (User) jdbcTemplate.queryForObject(sql, new Object[]{account}, new BeanPropertyRowMapper(User.class));
         String salt = info.getSalt();
         String encryptPwd = sha256Encrypt(salt, password);
@@ -62,13 +60,16 @@ public class QueryDatabaseAuthenticationHandler extends AbstractUsernamePassword
         } else {
 
             // 可自定义返回给客户端的多个属性信息
-            HashMap<String, Object> returnInfo = new HashMap<String, Object>();
-            returnInfo.put(account, info);
+            HashMap<String, Object> principleAttributes = new HashMap<String, Object>();
+            principleAttributes.put("name", info.getAccount());
+            principleAttributes.put("accountId", info.getAccountId());
+            principleAttributes.put("realName", info.getName());
+            principleAttributes.put("loginType", LoginTypeEnum.SIMPLE.getMsg());
 
             final List<MessageDescriptor> list = new ArrayList<MessageDescriptor>();
 
             return createHandlerResult(usernamePasswordCredential,
-                    this.principalFactory.createPrincipal(account, returnInfo), list);
+                    this.principalFactory.createPrincipal(account, principleAttributes), list);
         }
     }
 
