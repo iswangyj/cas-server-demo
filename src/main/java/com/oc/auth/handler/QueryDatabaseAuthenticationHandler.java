@@ -28,6 +28,8 @@ import java.util.List;
  * @date 2018/11/22
  */
 public class QueryDatabaseAuthenticationHandler extends AbstractUsernamePasswordAuthenticationHandler {
+
+
     public QueryDatabaseAuthenticationHandler(String name, ServicesManager servicesManager, PrincipalFactory principalFactory, Integer order) {
         super(name, servicesManager, principalFactory, order);
     }
@@ -47,23 +49,22 @@ public class QueryDatabaseAuthenticationHandler extends AbstractUsernamePassword
         jdbcTemplate.setDataSource(dataSource);
 
         String sql = "SELECT * FROM spp_user WHERE account = ?";
-        User info = (User) jdbcTemplate.queryForObject(sql, new Object[]{account}, new BeanPropertyRowMapper(User.class));
-        String salt = info.getSalt();
+        User user = (User) jdbcTemplate.queryForObject(sql, new Object[]{account}, new BeanPropertyRowMapper(User.class));
+        String salt = user.getSalt();
         String encryptPwd = sha256Encrypt(salt, password);
 
-        if (info == null) {
+        if (user == null) {
             throw new AccountException("Sorry, username not found!");
         }
 
-        if (!encryptPwd.equals(info.getPassword())) {
+        if (!encryptPwd.equals(user.getPassword())) {
             throw new FailedLoginException("Sorry, password not correct!");
         } else {
-
             // 可自定义返回给客户端的多个属性信息
             HashMap<String, Object> principleAttributes = new HashMap<String, Object>();
-            principleAttributes.put("name", info.getAccount());
-            principleAttributes.put("accountId", info.getAccountId());
-            principleAttributes.put("realName", info.getName());
+            principleAttributes.put("name", user.getAccount());
+            principleAttributes.put("accountId", user.getAccountId());
+            principleAttributes.put("realName", user.getName());
             principleAttributes.put("loginType", LoginTypeEnum.SIMPLE.getMsg());
 
             final List<MessageDescriptor> list = new ArrayList<MessageDescriptor>();
