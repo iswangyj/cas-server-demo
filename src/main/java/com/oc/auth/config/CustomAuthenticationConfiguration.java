@@ -1,7 +1,6 @@
 package com.oc.auth.config;
 
 import com.oc.auth.handler.QueryDatabaseAuthenticationHandler;
-import com.oc.repository.UserRepository;
 import org.apereo.cas.authentication.AuthenticationEventExecutionPlan;
 import org.apereo.cas.authentication.AuthenticationEventExecutionPlanConfigurer;
 import org.apereo.cas.authentication.AuthenticationHandler;
@@ -22,13 +21,13 @@ public class CustomAuthenticationConfiguration implements AuthenticationEventExe
     private ServicesManager servicesManager;
     
     @Bean
-    public AuthenticationHandler myAuthenticationHandler() {
+    public AuthenticationHandler queryDatabaseAuthenticationHandler() {
         return new QueryDatabaseAuthenticationHandler(QueryDatabaseAuthenticationHandler.class.getName(),
                 servicesManager, new DefaultPrincipalFactory(), 1);
     }
 
     @Override
     public void configureAuthenticationExecutionPlan(final AuthenticationEventExecutionPlan plan) {
-        plan.registerAuthenticationHandler(myAuthenticationHandler());
+        plan.registerAuthenticationHandler(queryDatabaseAuthenticationHandler());
     }
 }

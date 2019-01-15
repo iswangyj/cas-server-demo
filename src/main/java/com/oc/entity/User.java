@@ -36,12 +36,4 @@ public class User implements Serializable {
     private Date createdAt;
 
     private Date updatedAt;
-
-    private String userSn;
-
-    private String mailFrom;
-
-    private String certStyle;
-
-    private String department;
 }
