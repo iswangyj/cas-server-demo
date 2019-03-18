@@ -1,5 +1,6 @@
 package com.oc.auth.handler;
 
+import com.oc.entity.DatabaseProperties;
 import com.oc.entity.User;
 import com.oc.enums.LoginTypeEnum;
 import org.apache.commons.codec.binary.Hex;
@@ -29,9 +30,11 @@ import java.util.List;
  */
 public class QueryDatabaseAuthenticationHandler extends AbstractUsernamePasswordAuthenticationHandler {
 
+    private DatabaseProperties databaseProperties;
 
-    public QueryDatabaseAuthenticationHandler(String name, ServicesManager servicesManager, PrincipalFactory principalFactory, Integer order) {
+    public QueryDatabaseAuthenticationHandler(String name, ServicesManager servicesManager, PrincipalFactory principalFactory, Integer order, DatabaseProperties databaseProperties) {
         super(name, servicesManager, principalFactory, order);
+        this.databaseProperties = databaseProperties;
     }
 
     @Override
@@ -40,10 +43,10 @@ public class QueryDatabaseAuthenticationHandler extends AbstractUsernamePassword
         String password = usernamePasswordCredential.getPassword();
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://rm-m5ec16sm22j7393s3ro.mysql.rds.aliyuncs.com:3306/spp_dev2");
-        dataSource.setUsername("wyj");
-        dataSource.setPassword("wyj");
+        dataSource.setDriverClassName(databaseProperties.getDriver());
+        dataSource.setUrl(databaseProperties.getUrl());
+        dataSource.setUsername(databaseProperties.getUsername());
+        dataSource.setPassword(databaseProperties.getPassword());
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource);
