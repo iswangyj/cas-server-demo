@@ -1,1 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.oc.auth.config.CustomAuthenticationConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.oc.auth.config.CustomAuthenticationConfiguration
